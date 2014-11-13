@@ -89,4 +89,8 @@
 
       (setq x (+ x 1))
       ))
-      )
+   )
+)
+
+(provide 'init-tmux-keys)
+
