@@ -14,8 +14,8 @@
    mode-line-position
    " " mode-line-buffer-identification
    " " (vc-mode vc-mode)
-   persp-modestring
-   " " mode-name "--" minor-mode-alist
+   " " persp-modestring
+   "   " mode-name "--" minor-mode-alist
    mode-line-frame-identification
    mode-line-process
    mode-line-misc-info
@@ -29,9 +29,10 @@
     (after guide-key (diminish 'guide-key-mode "?"))
     (after rainbow-mode (diminish 'rainbow-mode "ω"))
     (after undo-tree (diminish 'undo-tree-mode "⇄"))
-    (after whitespace (diminish 'global-whitespace-mode "⎵")
-(diminish 'whitespace-mode "⎵"))
-    (after whitespace-cleanup-mode (diminish 'whitespace-cleanup-mode "♺"))
+    (after whitespace 
+      (diminish 'global-whitespace-mode "⎵")
+      (diminish 'whitespace-mode "⎵"))
+    (after whitespace-cleanup-mode (diminish 'whitespace-cleanup-mode "⚡"))
     ))
 
 (provide 'init-modeline)
