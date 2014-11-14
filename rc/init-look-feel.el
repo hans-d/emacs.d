@@ -1,34 +1,53 @@
-;; Let the mousewheel move the cursor in a sane manner.
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-    (setq mouse-wheel-progressive-speed nil)
+;; global layout
+;; Get more screen space asap
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-startup-screen t)
+
+;; Minibuffer can use some space
+(setq resize-mini-windows t)
+(setq max-mini-window-height 0.33)
+
+(require 'init-tmux)
+(require 'init-mouse)
+(require 'init-modeline)
+(require 'init-windows)
+(require 'init-backup)
+(require 'init-theme)
+
+;; Show line numbers everywhere
+(global-linum-mode t)
 
 ;; Make it easier to answer questions.
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; under tmux, restore normal key behaviour
-(require 'init-tmux-keys)
+;; I don't need to kill emacs that easily
+;; the mnemonic is C-x REALLY QUIT
+(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-x C-c") 'delete-frame)
 
-;; solarized theme
-(hansd/package-install 'color-theme-solarized)
-(load-theme 'solarized-dark t)
+;; Visual undo/redo
+;; use C-x u (undo-tree-visualize) to visually walk through the changes you've made
+(hansd/package-require undo-tree
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)))
 
-;; Make it really obvious where the 80th column sits.
-(setq-default fill-column 80)
+;; get some help
+;; https://github.com/kai2nenobu/guide-key
+(hansd/package-require guide-key
+  :config
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+  (guide-key-mode t))
 
-;; Show line numbers everywhere, and count columns
-(global-linum-mode 1)
-(column-number-mode 1)
-
-;; Browse URLs in a real browser
-(setq browse-url-browser-function 'browse-url-generic)
-(setq browse-url-generic-program "chromium-browser")
-
-;; Minibuffer often displays so much information, even temporarily, that it is nice to give it some room to breath.
-(setq resize-mini-windows t)
-(setq max-mini-window-height 0.33)
-
-;; keep modeline clutterfree
-(require 'diminish)
+;; https://github.com/browse-kill-ring/browse-kill-ring
+(hansd/package-require browse-kill-ring
+  :config
+  (progn 
+    (browse-kill-ring-default-keybindings) ;; M-y
+    (setq browse-kill-ring-quit-action 'save-and-restore)))
 
 
 (provide 'init-look-feel)

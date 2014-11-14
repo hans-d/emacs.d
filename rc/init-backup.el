@@ -11,7 +11,7 @@
 
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 
-;; cleanup function
+;; cleanup logic
 (defun hansd/clean-backup ()
   (message "Deleting old backup files...")
   (let ((week (* 60 60 24 7))
@@ -19,7 +19,7 @@
     (dolist (file (directory-files temporary-file-directory t))
       (when (and (backup-file-name-p file)
                  (> (- current (float-time (fifth (file-attributes file))))
-                    (* 4 week)))
+                    (* 2 week)))
         (message "%s" file)
         (delete-file file)))))
 

@@ -1,10 +1,5 @@
 ;; rainbow mode
-(use-package 'rainbow-mode)
-(after 'diminish
-  (after 'rainbow-mode
-    '(diminish 'rainbow-mode "ω")))
-
+;; https://julien.danjou.info/projects/emacs-packages#rainbow-mode
+(use-package rainbow-mode)
 
 (provide 'init-modes)
-
-
