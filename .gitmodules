@@ -1,0 +1,3 @@
+[submodule "src/yaml-mode"]
+	path = src/yaml-mode
+	url = https://github.com/hans-d/emacs-yaml-mode.git
