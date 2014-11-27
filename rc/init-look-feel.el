@@ -60,5 +60,11 @@
     (browse-kill-ring-default-keybindings) ;; M-y
     (setq browse-kill-ring-quit-action 'save-and-restore)))
 
+;; set frame title
+(setq frame-title-format
+  (list server-name " | "
+     '(buffer-file-name "%f"
+        (dired-directory dired-directory "%b"))))
+
 
 (provide 'init-look-feel)
