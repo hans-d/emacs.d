@@ -1,7 +1,13 @@
 (require 'package)
 
 ;; add additional repositories
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/"))
+
+;; make sure we have content
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
 
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
