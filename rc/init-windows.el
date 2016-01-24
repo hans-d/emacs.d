@@ -4,7 +4,7 @@
 ;; navigation
 ;; http://www.emacswiki.org/emacs/WindMove
 (use-package windmove
-  :bind 
+  :bind
   (("<C-c> <right>" . windmove-right)
    ("<C-c> <left>" . windmove-left)
    ("<C-c> <up>" . windmove-up)

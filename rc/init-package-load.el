@@ -1,17 +1,23 @@
 (require 'package)
 
+
 ;; add additional repositories
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("org" . "http://orgmode.org/elpa/"))
+
 
 ;; make sure we have content
 (when (not package-archive-contents)
   (package-refresh-contents))
 
 
+;; make usuable in older versions
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 
 ;; Use M-x package-refresh-contents to reload the list of packages
 (package-initialize)
@@ -34,11 +40,13 @@
 (hansd/package-install 'use-package)
 (require 'use-package)
 
+
 ; force install if missing + use-package
 (defmacro hansd/package-require (package &rest body)
   (progn
     (hansd/package-install package)
     (use-package package body)))
+
 
 (defmacro hansd/package-buildin (package &rest body)
   (message "buildin %s" package)

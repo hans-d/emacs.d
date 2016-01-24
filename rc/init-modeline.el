@@ -24,12 +24,12 @@
 ; diminish
 (hansd/package-install 'diminish)
 (use-package diminish
-  :config 
-  (progn 
+  :config
+  (progn
     (after guide-key (diminish 'guide-key-mode "?"))
     (after rainbow-mode (diminish 'rainbow-mode "ω"))
     (after undo-tree (diminish 'undo-tree-mode "⇄"))
-    (after whitespace 
+    (after whitespace
       (diminish 'global-whitespace-mode "⎵")
       (diminish 'whitespace-mode "⎵"))
     (after whitespace-cleanup-mode (diminish 'whitespace-cleanup-mode "⚡"))

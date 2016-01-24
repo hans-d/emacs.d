@@ -29,7 +29,7 @@
 ;; https://github.com/nex3/perspective-el
 (hansd/package-install 'perspective)
 (use-package perspective
-  :config (progn 
+  :config (progn
 	    (persp-mode)
 	    (setq global-mode-string (delq 'persp-modestring global-mode-string))))
 
@@ -56,7 +56,7 @@
 (hansd/package-install 'browse-kill-ring)
 (use-package browse-kill-ring
   :config
-  (progn 
+  (progn
     (browse-kill-ring-default-keybindings) ;; M-y
     (setq browse-kill-ring-quit-action 'save-and-restore)))
 
