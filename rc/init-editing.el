@@ -16,4 +16,11 @@
 ;; and add them directly
 (electric-pair-mode 1)
 
+
+;; spell check using hunspell
+;; on mac: brew install hunspell
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t))
+
 (provide 'init-editing)

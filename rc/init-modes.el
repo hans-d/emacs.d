@@ -2,8 +2,17 @@
 
 ;; org mode - many things
 ;; http://orgmode.org
+(hansd/package-install 'org)
 (use-package org)
+(eval-after-load "org"
+  '(require 'ox-md nil t))
 
+
+;; markdown mode
+;; http://jblevins.org/projects/markdown-mode/
+(hansd/package-install 'markdown-mode)
+(use-package markdown-mode)
+(add-to-list 'auto-mode-alist '("\\.md'" . markdown-mode))
 
 ;; rainbow mode - displays strings representing colors
 ;;    with the color they represent as background
